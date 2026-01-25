@@ -76,6 +76,7 @@
         ];
         config = ''
           ${builtins.readFile ./xmonad_mkononenko.hs}
+          myWallpaper = "${./wallpaper.jpg}"
         '';
       };
     };
