@@ -75,7 +75,7 @@
           haskellPackages.xmonad
         ];
         config = ''
-          ${builtins.readFile ./xmonad_mkononenko.hs}
+          ${builtins.readFile ./xmonad.hs}
           myWallpaper = "${./wallpaper.png}"
         '';
       };
