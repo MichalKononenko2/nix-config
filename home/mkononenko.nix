@@ -17,7 +17,6 @@
     pamixer
     direnv
     nix-direnv
-    transmission_4-qt
     vscode
     elan
     vlc
