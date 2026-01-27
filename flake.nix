@@ -19,7 +19,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.mkononenko = ./home.nix;
+          home-manager.users.mkononenko = ./home/mkononenko/user.nix;
         }
       ];
     };
