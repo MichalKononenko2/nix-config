@@ -13,6 +13,6 @@ jobs:
       - uses: cachix/cachix-action@v14
         with:
           name: mkononenko-nix-config
-      - run: nix build
+      - run: nix build #.nixosConfigurations.artax
       - run: nix-shell --run "echo OK"
 
