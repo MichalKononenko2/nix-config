@@ -22,6 +22,7 @@
     vlc
     dropbox
     evince
+    helix
   ];
 
   programs.git = {
@@ -35,6 +36,17 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
+  };
+
+  programs.helix = {
+    enable = true;
+    languages.language = [
+      {
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      }
+    ];
   };
 
   home.stateVersion = "25.05";
