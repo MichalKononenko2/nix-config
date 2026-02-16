@@ -45,6 +45,7 @@
 
   programs.helix = {
     enable = true;
+    settings.theme = "darcula-solid";
     extraPackages = with pkgs; [ nixd ];
     languages = {
       language = [
