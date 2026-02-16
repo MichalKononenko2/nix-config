@@ -28,7 +28,6 @@
     vlc
     dropbox
     evince
-    helix
   ];
 
   programs.git = {
