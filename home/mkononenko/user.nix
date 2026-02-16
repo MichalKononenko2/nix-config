@@ -1,11 +1,17 @@
-{ config, pkgs, lib, ...}:
+{
+  config,
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   home.username = "mkononenko";
   home.homeDirectory = lib.mkForce "/home/mkononenko";
 
   home.packages = with pkgs; [
     neofetch # Obviously needed for flexing reasons
-    nnn      # Neato terminal file manager
+    nnn # Neato terminal file manager
     brave
     htop
     inkscape
@@ -37,6 +43,38 @@
     enableCompletion = true;
   };
 
+  programs.helix = {
+    enable = true;
+    settings.theme = "darcula-solid";
+    extraPackages = with pkgs; [ nixd ];
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+        }
+      ];
+      language-server = {
+        nixd = {
+          command = "nixd";
+          args = [ "--semantic-tokens=true" ];
+          config.nixd =
+            let
+              myFlake = ''(builtins.getFlake "/etc/nixos")'';
+              nixosOpts = "${myFlake}.nixosConfigurations.${osConfig.networking.hostName}.options";
+            in
+            {
+              nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
+              formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+              options = {
+                nixos.expr = nixosOpts;
+                home-manager.expr = "${nixosOpts}.home-manager.users.type.getSubOptions []";
+              };
+            };
+        };
+      };
+    };
+  };
+
   home.stateVersion = "25.05";
 }
-
