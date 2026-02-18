@@ -13,17 +13,26 @@
   outputs =
     { nixpkgs, home-manager, ... }@inputs:
     {
-      nixosConfigurations.artax = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configurations/artax
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mkononenko = ./home/mkononenko/user.nix;
-          }
-        ];
+      nixosConfigurations = {
+        artax = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configurations/artax
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.mkononenko = ./home/mkononenko/user.nix;
+            }
+          ];
+        };
+        tianma1 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configurations/tianma1
+          ];
+        };
       };
     };
 }
+
