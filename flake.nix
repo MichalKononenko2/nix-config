@@ -8,10 +8,14 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    { nixpkgs, home-manager, disko, ... }@inputs:
     {
       nixosConfigurations = {
         artax = nixpkgs.lib.nixosSystem {
@@ -29,6 +33,7 @@
         tianma1 = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            disko.nixosModules.disko
             ./configurations/tianma1
           ];
         };

@@ -3,6 +3,7 @@
   imports = [
     ../../hosts/tianma1.nix
     ./networking.nix # generated at runtime by nixos-infect
+    ./disk-config.nix
   ];
 
   nix.settings.experimental-features = [
@@ -12,6 +13,11 @@
 
   # Workaround for https://github.com/NixOS/nix/issues/8502
   services.logrotate.checkConfig = false;
+
+  boot.loader.grub = {
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+  };
 
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
