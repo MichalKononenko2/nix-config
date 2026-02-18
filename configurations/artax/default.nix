@@ -2,15 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ../../hosts/artax.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -49,7 +52,11 @@
   users.users.mkononenko = {
     isNormalUser = true;
     description = "Michal Kononenko";
-    extraGroups = [ "networkmanager" "wheel" "bluetooth" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "bluetooth"
+    ];
   };
 
   # Configure the X Server
@@ -69,7 +76,7 @@
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        extraPackages = haskellPackages : [
+        extraPackages = haskellPackages: [
           haskellPackages.xmonad-contrib
           haskellPackages.xmonad-extras
           haskellPackages.xmonad
@@ -127,7 +134,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -144,9 +151,8 @@
       blueman
       cachix
     ];
-   variables.EDITOR = "hx";
+    variables.EDITOR = "hx";
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
