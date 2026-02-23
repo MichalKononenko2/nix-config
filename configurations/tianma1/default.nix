@@ -1,9 +1,8 @@
 { ... }:
 {
   imports = [
-    ../../hosts/tianma1.nix
+    ../../hosts/tianma1
     ./networking.nix # generated at runtime by nixos-infect
-    ./disk-config.nix
   ];
 
   nix.settings.experimental-features = [
@@ -27,4 +26,3 @@
   users.users.root.openssh.authorizedKeys.keys = [ "" ];
   system.stateVersion = "25.11";
 }
-
