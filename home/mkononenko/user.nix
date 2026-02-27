@@ -28,6 +28,7 @@
     vlc
     dropbox
     evince
+    zip
   ];
 
   programs.git = {
