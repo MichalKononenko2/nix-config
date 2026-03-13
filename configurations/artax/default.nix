@@ -143,7 +143,6 @@
   environment = {
     systemPackages = with pkgs; [
       git
-      inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
       xclip
       wget
       unzip
