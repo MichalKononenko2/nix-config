@@ -1,8 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
   home.username = "openclaw";
-  home.homeDirectory = "/home/openclaw";
+  home.homeDirectory = lib.mkForce "/home/openclaw";
   home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
