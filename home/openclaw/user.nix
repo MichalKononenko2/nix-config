@@ -24,7 +24,7 @@
 
     # Workspace documents teach the gateway who it is and what it can do.
     # These files live in your nix-config repo at home/openclaw/documents/.
-    documents = ./documents;
+    documents = /.;
 
     config = {
       # Gateway runs locally (loopback only — safe default for a VPS).
@@ -40,13 +40,6 @@
         allowFrom = [ 0 ]; # REPLACE with your Telegram user ID (integer)
       };
     };
-
-    # Minimal plugin set for a Hetzner Linux VPS (no macOS-only tools).
-    # oracle = web search; summarize = URLs/PDFs. Both work headlessly.
-    plugins = [
-      { source = "github:openclaw/nix-steipete-tools?dir=tools/oracle"; }
-      { source = "github:openclaw/nix-steipete-tools?dir=tools/summarize"; }
-    ];
   };
 
   # ─── GitHub review tooling ───────────────────────────────────────────────────
