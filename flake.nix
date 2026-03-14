@@ -40,6 +40,7 @@
             disko.nixosModules.disko
             ./configurations/tianma1
             home-manager.nixosModules.home-manager
+            { nixpkgs.overlays = [ nix-openclaw.overlays.default ]; }
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

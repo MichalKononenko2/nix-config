@@ -24,7 +24,7 @@
 
     # Workspace documents teach the gateway who it is and what it can do.
     # These files live in your nix-config repo at home/openclaw/documents/.
-    documents = /.;
+    documents = ./.;
 
     config = {
       # Gateway runs locally (loopback only — safe default for a VPS).
