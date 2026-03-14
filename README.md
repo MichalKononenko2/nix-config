@@ -1,5 +1,9 @@
 # Nixos-Config
 
+## Documentation
+
+The /documentation directory contains the configuration's Sphinx docs.
+
 ## Directory Structure
 
 Home - contains user-specific configuration using home-manager.
