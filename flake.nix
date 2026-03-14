@@ -11,10 +11,14 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, disko, ... }@inputs:
+    { nixpkgs, home-manager, disko, agenix, ... }@inputs:
     {
       nixosConfigurations = {
         artax = nixpkgs.lib.nixosSystem {
