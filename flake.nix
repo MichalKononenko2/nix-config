@@ -18,7 +18,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, disko, sphinxcontrib-nixdomain, ... }@inputs: {
+    { self, nixpkgs, home-manager, disko, sphinxcontrib-nixdomain, ... }@inputs: {
       nixosConfigurations = {
         artax = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
@@ -41,6 +41,30 @@
           ];
         };
     };
+    
+    packages.x86_64-linux = 
+      let
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          overlays = [ sphinxcontrib-nixdomain.overlays.default ];
+        };
+      in
+      {
+        docs = pkgs.callPackage ./docs {
+          nixDomainObjects = sphinxcontrib-nixdomain.lib.documentObjects {
+            sources = {
+              self = self.outPath;
+              nixpkgs = nixpkgs.outPath;
+            };
+            options.options =
+              (nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = [ self.nixosModules.default ];
+              }).options;
+            packages.packages = self.packages.x86_64-linux;
+          };
+        };
+      };
   };
 }
 
