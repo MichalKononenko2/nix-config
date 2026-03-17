@@ -1,9 +1,17 @@
-{ ... } @ args:
+{ pkgs, ... } @ args:
 {
   imports = [
     ../../hosts/tianma1
     ./networking.nix # generated at runtime by nixos-infect
   ];
+
+  users.users.openclaw = {
+    isNormalUser = true;
+    group = "openclaw";
+    home = "/home/openclaw";
+    shell = pkgs.bash;
+  };
+  users.groups.openclaw = {};
 
   nix.settings.experimental-features = [
     "nix-command"
