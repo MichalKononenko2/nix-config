@@ -14,7 +14,7 @@ stdenvNoCC.mkDerivation {
     myst-parser
     sphinx
     sphinx-design
-    sphincontrib-nixdomain
+    sphinxcontrib-nixdomain
   ];
 
   dontConfigure = true;
@@ -27,8 +27,8 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/share/doc/${pname}
-    cp -r _build/html $/out/share/doc/${pnane}
+    mkdir -p $out/share/doc/nix-config-docs
+    cp -r _build/html $/out/share/doc/nix-config-docs
     runHook postInstall
   '';
 
