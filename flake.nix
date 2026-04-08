@@ -16,6 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl/2511.7.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -50,6 +54,12 @@
               ];
               home-manager.users.openclaw = ./home/openclaw/user.nix;
             }
+          ];
+        };
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configurations/wsl
           ];
         };
       };
