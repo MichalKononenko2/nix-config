@@ -25,6 +25,7 @@
     nix-direnv
     vscode
     elan
+    tor-browser
     vlc
     dropbox
     evince
