@@ -11,6 +11,10 @@ copyright = '2026, Michal Kononenko'
 author = 'Michal Kononenko'
 release = '0.1'
 
+source_repository = 'https://github.com/MichalKononenko2/nix-config'
+
+language = "en"
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
