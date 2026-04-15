@@ -20,8 +20,10 @@ language = "en"
 
 extensions = [
   "sphinxcontrib_nixdomain",
-  "sphinx_design",
-  "myst_parser"
+  "sphinx.ext.githubpages",
+  "sphinx.ext.intersphinx",
+  "myst_parser",
+  "sphinx_design"
 ]
 
 myst_enable_extensions = ["colon_fence", "fieldlist"]
