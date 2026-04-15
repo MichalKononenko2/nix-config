@@ -3,6 +3,16 @@
 
 Add stuff using Markdown
 
+```{default-domain} nix
+```
+
+## Configurations
+
+```{automodule} configurations
+```
+
+## Library
+
 ```{autolibrary}
 ```
 
