@@ -28,7 +28,7 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/nix-config-docs
-    cp -r build/html $out/nix-config-docs
+    cp -r build/html/* $out/nix-config-docs
     runHook postInstall
   '';
 
