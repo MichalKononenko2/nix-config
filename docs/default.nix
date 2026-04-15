@@ -28,10 +28,14 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/doc/nix-config-docs
-    cp -r _build/html $/out/share/doc/nix-config-docs
+    cp -r build/html $out/share/doc/nix-config-docs
     runHook postInstall
   '';
 
   env.NIXDOMAIN_OBJECTS = nixdomainObjects;
+
+  meta = {
+    description = "Nix derivation for nix-config sphinx docs";
+  };
 }
 

@@ -29,6 +29,9 @@ myst_enable_extensions = ["colon_fence", "fieldlist"]
 templates_path = ['_templates']
 exclude_patterns = []
 
+intersphinx_mapping = {
+  'nixdomain': ('https://sphinxcontrib-nixdomain.readthedocs.io/en/latest', None)
+}
 
 
 # -- Options for HTML output -------------------------------------------------

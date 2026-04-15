@@ -82,6 +82,15 @@
         };
       };
     };
+
+  devShells.x86_64-linux.default = nixpkgs.mkShell {
+    packages = with nixpkgs; [
+      python3.pkgs.sphinx
+      python3.pkgs.myst-parser
+      python3.pkgs.sphinx-design
+      python3.pkgs.sphinxcontrib-nixdomain
+    ];
+  };
   };
 }
 
