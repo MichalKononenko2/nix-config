@@ -7,6 +7,8 @@
 ## Building the Docs
 
 Use ``nix build .#docs`` to build the documentation.
+This invokes the flakes feature in nix, and points to the ``docs`` package in
+this directory's ``flake.nix`` for building.
 
 ## Repository Structure
 
