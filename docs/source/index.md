@@ -18,6 +18,9 @@ Tianma1 is a VPS instance running on Hetzner.
 
 It also declares the ``docs`` package.
 
+```{include} ./deployment.md
+```
+
 
 ## Automodule
 
