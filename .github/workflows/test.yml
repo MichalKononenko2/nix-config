@@ -28,7 +28,7 @@ jobs:
         with:
           name: mkononenko-nix-config
       - run: nix build .#docs
-      - uses: actions/upload-pages/artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./result/nix-config-docs
   
