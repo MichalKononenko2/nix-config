@@ -79,6 +79,7 @@
             self = self.outPath;
             nixpkgs = nixpkgs.outPath;
           };
+          options.options = self.nixosConfigurations.artax.options;
           packages.packages = self.packages.x86_64-linux; 
         };
       };

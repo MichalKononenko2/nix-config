@@ -6,12 +6,12 @@ Add stuff using Markdown
 ```{default-domain} nix
 ```
 
-## Configurations
+## Automodule
 
-```{automodule} configurations
+```{automodule} 
 ```
 
-## Library
+## Autolibrary
 
 ```{autolibrary}
 ```
@@ -21,5 +21,4 @@ Add stuff using Markdown
 
 * {ref}`genindex`
 * {ref}`nix-optionsindex`
-* {ref}`nix-libindex`
 
