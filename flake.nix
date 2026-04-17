@@ -79,9 +79,7 @@
             self = self.outPath;
             nixpkgs = nixpkgs.outPath;
           };
-          packages.packages = {
-            inherit (self.packages.x86_64-linux) docs;
-          };
+          packages.packages = self.packages.x86_64-linux; 
         };
       };
     };
