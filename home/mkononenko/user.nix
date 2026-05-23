@@ -30,6 +30,7 @@
     dropbox
     evince
     zip
+    usbutils
   ];
 
   programs.git = {
