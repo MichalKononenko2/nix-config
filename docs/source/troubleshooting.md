@@ -25,7 +25,7 @@ I checked ``xinput list`` to see if the touchpad responds. The result is
 Nothing there lists a ``Touchpad``. The product is a ```PIXA3854:00 093A:02745 Touchpad```. Attempting
 a cold boot to see what happens.
 
-### After the Reboot
+#### After the Reboot
 
 It's back, like it never left.
 
@@ -51,4 +51,18 @@ It's back, like it never left.
 
 
 ```
+
+
+### 2026-05-25: Broken Nix Flake Check
+
+I ran `nix flake update` and then `nix flake check`. 
+Nothing was out of the ordinary on my machine.
+On merging [PR #24](https://github.com/MichalKononenko2/nix-config/pull/24),
+the [continuous integration job](https://github.com/MichalKononenko2/nix-config/pull/24)
+failed. The problem is due to a bad [nix-openclaw](openclaw/nix-openclaw-tools) build
+getting pushed to mainline. 
+
+The solution is to `nix flake update` only one package. The nix reference
+manual [section 8.5.28](https://nix.dev/manual/nix/2.25/command-ref/new-cli/nix3-flake-update)
+lists more information.
 
