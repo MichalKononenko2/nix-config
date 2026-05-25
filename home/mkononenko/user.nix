@@ -11,7 +11,6 @@
 
   home.packages = with pkgs; [
     neofetch # Obviously needed for flexing reasons
-    nnn # Neato terminal file manager
     brave
     htop
     inkscape
@@ -30,6 +29,7 @@
     dropbox
     evince
     zip
+    usbutils
   ];
 
   programs.git = {
