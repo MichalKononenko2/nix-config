@@ -23,6 +23,9 @@ It also declares the ``docs`` package.
 ```{include} ./deployment.md
 ```
 
+```{include} ./troubleshooting.md
+```
+
 
 ## Automodule
 
