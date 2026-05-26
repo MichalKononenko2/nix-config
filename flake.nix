@@ -33,7 +33,7 @@
     disko, 
     nix-openclaw, 
     sphinxcontrib-nixdomain,
-    ...
+    nixos-wsl
   }@inputs: {
     nixosConfigurations = {
       artax = nixpkgs.lib.nixosSystem {
@@ -67,7 +67,18 @@
           }
         ];
       };
-  };
+
+      wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "25.11";
+            wsl.enable = true;
+          }
+        ];
+      };
+    };
 
   packages.x86_64-linux =
     let
@@ -85,12 +96,6 @@
           };
           options.options = self.nixosConfigurations.artax.options;
           packages.packages = self.packages.x86_64-linux; 
-        };
-        wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./configurations/wsl
-          ];
         };
       };
     };
