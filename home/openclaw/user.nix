@@ -22,10 +22,6 @@
   programs.openclaw = {
     enable = true;
 
-    # Workspace documents teach the gateway who it is and what it can do.
-    # These files live in your nix-config repo at home/openclaw/documents/.
-    documents = ./.;
-
     config = {
       # Gateway runs locally (loopback only — safe default for a VPS).
       gateway = {
@@ -39,6 +35,14 @@
         tokenFile = "/home/openclaw/.secrets/telegram-bot-token";
         allowFrom = [ 0 ]; # REPLACE with your Telegram user ID (integer)
       };
+    };
+
+    workspace.bootstrapFiles = {
+      agents = ./AGENTS.md;
+      soul = ./SOUL.md;
+      tools = ./TOOLS.md;
+      identity = ./IDENTITY.md;
+      user = ./USER.md;
     };
   };
 
