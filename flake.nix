@@ -44,25 +44,6 @@
           }
         ];
       };
-
-      tianma1 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          disko.nixosModules.disko
-          ./configurations/tianma1
-          home-manager.nixosModules.home-manager
-          { nixpkgs.overlays = [ nix-openclaw.overlays.default ]; }
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.sharedModules = [
-              nix-openclaw.homeManagerModules.openclaw
-            ];
-            home-manager.users.openclaw = ./home/openclaw/user.nix;
-          }
-        ];
-      };
   };
 
   packages.x86_64-linux =
