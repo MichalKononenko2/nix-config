@@ -10,7 +10,7 @@
   home.homeDirectory = lib.mkForce "/home/mkononenko";
 
   home.packages = with pkgs; [
-    neofetch # Obviously needed for flexing reasons
+    fastfetch
     brave
     htop
     inkscape
