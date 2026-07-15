@@ -20,6 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl/2511.7.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { 
@@ -29,7 +33,7 @@
     disko, 
     nix-openclaw, 
     sphinxcontrib-nixdomain,
-    ...
+    nixos-wsl
   }@inputs: {
     nixosConfigurations = {
       artax = nixpkgs.lib.nixosSystem {
@@ -44,7 +48,19 @@
           }
         ];
       };
-  };
+
+      wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "26.05";
+            wsl.enable = true;
+            networking.resolvconf.enable = false;
+          }
+        ];
+      };
+    };
 
   packages.x86_64-linux =
     let
