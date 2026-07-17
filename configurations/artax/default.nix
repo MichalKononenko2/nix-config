@@ -7,7 +7,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ../../hosts/artax.nix
+    ../../hosts/artax
   ];
 
   nix.settings.experimental-features = [

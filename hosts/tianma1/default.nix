@@ -8,7 +8,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     ./disk-config.nix
   ];
-  boot.loader.grub.device = "/dev/sda";
+  boot.loade.grub.device = "/dev/sda";
   boot.initrd.availableKernelModules = [
     "ata_piix"
     "uhci_hcd"
