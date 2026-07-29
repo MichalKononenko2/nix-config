@@ -15,11 +15,6 @@
       url = "github:minijackson/sphinxcontrib-nixdomain";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-openclaw = {
-      url = "github:openclaw/nix-openclaw?tag=v2026.6.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl/2511.7.1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +26,6 @@
     nixpkgs, 
     home-manager, 
     disko, 
-    nix-openclaw, 
     sphinxcontrib-nixdomain,
     nixos-wsl
   }@inputs: {
