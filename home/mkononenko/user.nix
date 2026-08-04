@@ -47,8 +47,9 @@
 
   programs.vim = {
     enable = true;
+    packageConfigurable = pkgs.vim-full;
     extraConfig =''
-      set clipboard=unnamedplus
+      set clipboard+=unnamedplus
     '';
   };
 
