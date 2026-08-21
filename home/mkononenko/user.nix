@@ -45,6 +45,14 @@
     enableCompletion = true;
   };
 
+  programs.vim = {
+    enable = true;
+    packageConfigurable = pkgs.vim-full;
+    extraConfig =''
+      set clipboard+=unnamedplus
+    '';
+  };
+
   programs.helix = {
     enable = true;
     settings.theme = "darcula-solid";
