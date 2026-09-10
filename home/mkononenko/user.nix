@@ -30,6 +30,7 @@
     evince
     zip
     usbutils
+    traceroute
   ];
 
   programs.git = {
