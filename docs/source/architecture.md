@@ -1,5 +1,11 @@
 # Architecture
 
+The top-level nix config is exposed in ``flake.nix``. This flake exposes a series
+of configurations found in the ``configurations`` directory.  A ``configuration`` is
+a composition of ``hosts`` and ``modules``. A ``host`` represents a physical machine.
+``modules`` contain components exposed via nix options. ``configurations`` are where
+these two items come together.
+
 ## Layout
 
 ```
@@ -36,9 +42,8 @@ Three axes, and what belongs on each:
 
 ## Where secrets fit
 
-Secrets are the one thing that is deliberately *not* a module concern, and the
-reason is worth stating plainly: a secret that appears in a Nix expression is a
-secret in the Nix store, and the Nix store is world-readable and cached in
+A secret in a Nix expression is a
+secret in the Nix store. The Nix store is world-readable and cached in
 places you do not control.
 
 So `secrets/` holds age ciphertext, which is safe to commit, and the plaintext
