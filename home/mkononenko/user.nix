@@ -31,6 +31,7 @@
     zip
     usbutils
     traceroute
+    opencode
   ];
 
   programs.git = {
