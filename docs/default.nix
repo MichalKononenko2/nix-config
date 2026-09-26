@@ -2,7 +2,8 @@
   stdenvNoCC,
   lib,
   python3,
-  nixdomainObjects
+  nixdomainObjects,
+  doctype
 }:
 stdenvNoCC.mkDerivation {
   pname = "nix-config-docs";
@@ -21,7 +22,7 @@ stdenvNoCC.mkDerivation {
 
   buildPhase = ''
     runHook preBuild
-    make html
+    make ${doctype}
     runHook postBuild
   '';
 

@@ -161,6 +161,7 @@
         in
         {
           docs = pkgs.callPackage ./docs {
+            doctype = "html";
             nixdomainObjects = sphinxcontrib-nixdomain.lib.documentObjects {
               sources = {
                 self = self.outPath;
@@ -194,6 +195,32 @@
               # repository exports no custom packages and no `lib`, and
               # documenting nixpkgs' would mean documenting all of it. Both
               # become worth passing once there is something of ours to show.
+            };
+          };
+        latexDocs = pkgs.callPackage ./docs {
+            doctype = "latexpdf";
+            nixdomainObjects = sphinxcontrib-nixdomain.lib.documentObjects {
+              sources = {
+                self = self.outPath;
+                nixpkgs = nixpkgs.outPath;
+              };
+              options = {
+                options =
+                  (lib.nixosSystem {
+                    inherit system;
+                    modules =
+                      builtins.attrValues nixosModules
+                      ++ nixosModuleDependencies
+                      ++ [
+                        (
+                          { config, ... }:
+                          {
+                            system.stateVersion = config.system.nixos.release;
+                          }
+                        )
+                      ];
+                  }).options;
+              };
             };
           };
         }
