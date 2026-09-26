@@ -18,6 +18,10 @@ not be writing to the cache anyway).
 | `docs-coverage` | A module under `modules/` with no page under `docs/source/modules/` |
 | `home-manager`  | A broken file under `home/`, which `nix flake check` otherwise skips |
 
+``skipPush`` is enabled in ``test.yml``. This is because this workflow should not be pushing
+to the cachix cache from a pull request. Pushes to ``cachix`` are only done when the master
+branch is built.
+
 ## `build_docs.yml` — on every push to `master`
 
 Builds `.#docs` and deploys it to GitHub Pages. This is the only workflow with

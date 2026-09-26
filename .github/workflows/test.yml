@@ -12,11 +12,6 @@ jobs:
       - uses: cachix/cachix-action@v14
         with:
           name: mkononenko-nix-config
-          # Pull-only. Forked pull requests have no write token, and this
-          # workflow should not be pushing to the cache from a PR anyway --
-          # that is build_docs.yml's job.
           skipPush: true
-      # Covers every NixOS configuration and module, builds the docs, runs the
-      # docs-coverage check, and evaluates the home-manager configurations.
       - run: nix flake check
 
