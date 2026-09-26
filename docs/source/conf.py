@@ -23,6 +23,12 @@ language = "en"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+# Make `nix` the default domain for every document, so that ``{automodule}``
+# and friends work without a ``{default-domain} nix`` marker at the top of each
+# file. The marker only applies to the file it appears in, which meant
+# MyST-included pages silently lost it.
+primary_domain = "nix"
+
 extensions = [
   "sphinxcontrib_nixdomain",
   "sphinx.ext.githubpages",
@@ -53,7 +59,7 @@ def nixdomain_linkcode_resolve(path: str) -> str:
 
   match url.netloc:
     case "self":
-      return f"https://example.com/blob/master{url.path}{fragment}"
+      return f"{source_repository}/blob/master{url.path}{fragment}"
     case "nixpkgs":
       return f"https://github.com/NixOS/nixpkgs/blob/master{url.path}{fragment}"
     case _:
