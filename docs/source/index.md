@@ -1,44 +1,52 @@
+# Nix-Config
 
-# Nix-Config documentation
+Documentation for [the `nix-config` repository](https://github.com/MichalKononenko2/nix-config),
+which holds Michal Kononenko's operating system configuration.
 
-```{default-domain} nix
+This site is generated from the configuration itself. Module options are
+rendered straight out of the NixOS module system, so the documentation cannot
+drift away from the options it describes.
+
+## Building the docs
+
+```sh
+nix build .#docs
 ```
 
-## Building the Docs
+The result is a directory named `nix-config-docs` inside `./result`. To build
+and preview locally with live reload:
 
-Use ``nix build .#docs`` to build the documentation.
-This invokes the flakes feature in nix, and points to the ``docs`` package in
-this directory's ``flake.nix`` for building.
-
-## Repository Structure
-
-``flake.nix`` declares the ``artax`` system.
-
-Artax is my personal computer.
-
-
-It also declares the ``docs`` package.
-
-```{include} ./deployment.md
+```sh
+nix build .#docs && python -m http.server -d ./result/nix-config-docs
 ```
 
-```{include} ./troubleshooting.md
+`nix flake check` builds the docs too, so a pull request that breaks the
+documentation will fail CI on its own.
+
+```{toctree}
+:maxdepth: 2
+:caption: Modules
+
+modules/index
 ```
 
+```{toctree}
+:maxdepth: 2
+:caption: Hosts
 
-## Automodule
-
-```{automodule} 
+hosts/index
 ```
 
-## Autolibrary
+```{toctree}
+:maxdepth: 1
+:caption: Repository
 
-```{autolibrary}
+architecture
+deployment
+troubleshooting
 ```
 
-
-# Indices and tables
+## Indices
 
 * {ref}`genindex`
 * {ref}`nix-optionsindex`
-

@@ -1,4 +1,6 @@
 .*.swp
 docs/build
 result
+secrets/*.nix
+secrets/identity.age
 
