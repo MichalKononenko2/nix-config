@@ -57,6 +57,30 @@
       "wheel"
       "bluetooth"
     ];
+    packages = with pkgs; [
+      fastfetch
+      brave
+      htop
+      inkscape
+      gimp
+      darktable
+      cmatrix
+      zoom-us
+      spotify
+      pamixer
+      direnv
+      nix-direnv
+      vscode
+      elan
+      tor-browser
+      vlc
+      dropbox
+      evince
+      zip
+      usbutils
+      traceroute
+      opencode
+    ];
   };
 
   # Configure the X Server

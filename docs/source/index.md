@@ -12,11 +12,10 @@ this directory's ``flake.nix`` for building.
 
 ## Repository Structure
 
-``flake.nix`` declares the ``artax`` and the ``tianma1`` system.
+``flake.nix`` declares the ``artax`` system.
 
 Artax is my personal computer.
 
-Tianma1 is a VPS instance running on Hetzner. 
 
 It also declares the ``docs`` package.
 
