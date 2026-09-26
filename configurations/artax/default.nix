@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -56,6 +56,30 @@
       "networkmanager"
       "wheel"
       "bluetooth"
+    ];
+    packages = with pkgs; [
+      fastfetch
+      brave
+      htop
+      inkscape
+      gimp
+      darktable
+      cmatrix
+      zoom-us
+      spotify
+      pamixer
+      direnv
+      nix-direnv
+      vscode
+      elan
+      tor-browser
+      vlc
+      dropbox
+      evince
+      zip
+      usbutils
+      traceroute
+      opencode
     ];
   };
 

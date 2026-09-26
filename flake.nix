@@ -2,26 +2,13 @@
   description = "Michal Kononenko's operating system";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     sphinxcontrib-nixdomain = {
       url = "github:minijackson/sphinxcontrib-nixdomain";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-openclaw = {
-      url = "github:openclaw/nix-openclaw?tag=v2026.6.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     nixos-wsl = {
-      url = "github:nix-community/nixos-wsl/2511.7.1";
+      url = "github:nix-community/nixos-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -29,24 +16,13 @@
   outputs = { 
     self,
     nixpkgs, 
-    home-manager, 
-    disko, 
-    nix-openclaw, 
     sphinxcontrib-nixdomain,
-    nixos-wsl
+    nixos-wsl,
   }@inputs: {
     nixosConfigurations = {
       artax = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-          ./configurations/artax
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mkononenko = ./home/mkononenko/user.nix;
-          }
-        ];
+        modules = [ ./configurations/artax ];
       };
 
       wsl = nixpkgs.lib.nixosSystem {
