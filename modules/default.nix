@@ -11,5 +11,6 @@
     ./desktop
     ./server
     ./users/mkononenko.nix
+    ./docs
   ];
 }
