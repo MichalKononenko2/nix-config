@@ -9,8 +9,9 @@ which is generated from this repository's own module options by
 [sphinxcontrib-nixdomain](https://sphinxcontrib-nixdomain.readthedocs.io/).
 
 ```sh
-nix build .#docs   # -> ./result/nix-config-docs
-nix flake check   # evaluates every host, builds the docs, checks doc coverage
+nix build .#docs       # -> ./result/nix-config-docs
+nix build .#latexDocs  # -> ./result/pdf/*.pdf
+nix flake check        # evaluates every host, builds the docs, checks doc coverage
 ```
 
 ## Directory structure
