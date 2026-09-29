@@ -158,44 +158,50 @@
             inherit system;
             overlays = [ sphinxcontrib-nixdomain.overlays.default ];
           };
+
+          # JSON of every option documented in this repository, consumed by
+          # sphinxcontrib-nixdomain at build time to render `autooption`
+          # blocks. Shared by the HTML and LaTeX documentation builds so the
+          # two cannot drift apart.
+          nixdomainObjects = sphinxcontrib-nixdomain.lib.documentObjects {
+            sources = {
+              self = self.outPath;
+              nixpkgs = nixpkgs.outPath;
+            };
+            options = {
+              # Imported in isolation: the repository's own modules, plus the
+              # third-party modules they need. No host, because a host would
+              # contribute nixpkgs options that the filter discards anyway.
+              options =
+                (lib.nixosSystem {
+                  inherit system;
+                  modules =
+                    builtins.attrValues nixosModules
+                    ++ nixosModuleDependencies
+                    # No host is imported, so there is no release to record.
+                    # Nothing is built from this evaluation, so the value is
+                    # irrelevant; setting it just keeps the warning out of
+                    # the build log.
+                    ++ [
+                      (
+                        { config, ... }:
+                        {
+                          system.stateVersion = config.system.nixos.release;
+                        }
+                      )
+                    ];
+                }).options;
+            };
+            # `packages` and `library` are deliberately omitted. This
+            # repository exports no custom packages and no `lib`, and
+            # documenting nixpkgs' would mean documenting all of it. Both
+            # become worth passing once there is something of ours to show.
+          };
         in
         {
-          docs = pkgs.callPackage ./docs {
-            nixdomainObjects = sphinxcontrib-nixdomain.lib.documentObjects {
-              sources = {
-                self = self.outPath;
-                nixpkgs = nixpkgs.outPath;
-              };
-              options = {
-                # Imported in isolation: the repository's own modules, plus the
-                # third-party modules they need. No host, because a host would
-                # contribute nixpkgs options that the filter discards anyway.
-                options =
-                  (lib.nixosSystem {
-                    inherit system;
-                    modules =
-                      builtins.attrValues nixosModules
-                      ++ nixosModuleDependencies
-                      # No host is imported, so there is no release to record.
-                      # Nothing is built from this evaluation, so the value is
-                      # irrelevant; setting it just keeps the warning out of
-                      # the build log.
-                      ++ [
-                        (
-                          { config, ... }:
-                          {
-                            system.stateVersion = config.system.nixos.release;
-                          }
-                        )
-                      ];
-                  }).options;
-              };
-              # `packages` and `library` are deliberately omitted. This
-              # repository exports no custom packages and no `lib`, and
-              # documenting nixpkgs' would mean documenting all of it. Both
-              # become worth passing once there is something of ours to show.
-            };
-          };
+          docs = pkgs.callPackage ./docs/html.nix { inherit nixdomainObjects; };
+
+          latexDocs = pkgs.callPackage ./docs/latex.nix { inherit nixdomainObjects; };
         }
       );
 

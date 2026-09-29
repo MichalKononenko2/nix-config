@@ -20,6 +20,12 @@ and preview locally with live reload:
 nix build .#docs && python -m http.server -d ./result/nix-config-docs
 ```
 
+A PDF of the same site is built from LaTeX:
+
+```sh
+nix build .#latexDocs   # -> ./result/pdf/*.pdf
+```
+
 `nix flake check` builds the docs too, so a pull request that breaks the
 documentation will fail CI on its own.
 
