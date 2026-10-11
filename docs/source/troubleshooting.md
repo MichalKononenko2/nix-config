@@ -65,3 +65,7 @@ The solution is to `nix flake update` only one package. The nix reference
 manual [section 8.5.28](https://nix.dev/manual/nix/2.25/command-ref/new-cli/nix3-flake-update)
 lists more information.
 
+## 2026-10-10: USB SD Card Dongle Not Responding
+
+``fdisk -l`` wasn't showing the SD card file system.
+

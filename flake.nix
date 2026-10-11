@@ -34,8 +34,7 @@
       disko,
       home-manager,
       nixos-wsl,
-      sphinxcontrib-nixdomain,
-      ...
+      sphinxcontrib-nixdomain
     }@inputs:
     let
       inherit (nixpkgs) lib;
