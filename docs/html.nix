@@ -2,12 +2,12 @@
   stdenvNoCC,
   lib,
   python3,
-  nixdomainObjects
+  nixdomainObjects,
 }:
 stdenvNoCC.mkDerivation {
   pname = "nix-config-docs";
   version = "0.0.1";
-  
+
   src = ./.;
 
   nativeBuildInputs = with python3.pkgs; [
@@ -35,7 +35,6 @@ stdenvNoCC.mkDerivation {
   env.NIXDOMAIN_OBJECTS = nixdomainObjects;
 
   meta = {
-    description = "Nix derivation for nix-config sphinx docs";
+    description = "Nix derivation for nix-config html docs";
   };
 }
-

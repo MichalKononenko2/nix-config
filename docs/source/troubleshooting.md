@@ -65,3 +65,26 @@ The solution is to `nix flake update` only one package. The nix reference
 manual [section 8.5.28](https://nix.dev/manual/nix/2.25/command-ref/new-cli/nix3-flake-update)
 lists more information.
 
+## 2026-10-10: USB SD Card Dongle Not Responding
+
+``fdisk -l`` wasn't showing the SD card file system.
+I connected my USB hub. The output of ``lsusb`` after connection was
+
+```
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 003: ID 2109:0817 VIA Labs, Inc. USB3.0 Hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 003: ID 27c6:609c Shenzhen Goodix Technology Co.,Ltd. Goodix Fingerprint USB Device
+Bus 003 Device 004: ID 8087:0032 Intel Corp. AX210 Bluetooth
+Bus 003 Device 011: ID 32ac:0002 Framework HDMI Expansion Card
+Bus 003 Device 013: ID 2109:2817 VIA Labs, Inc. USB2.0 Hub
+Bus 003 Device 014: ID 1908:0226 GEMBIRD MicroSD Card Reader/Writer
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+```
+
+The ``VIA Labs`` device is the USB hub. After this. ``fdisk -l`` found the SD
+card filesystem. How?
+
+The SD card slot also started working. Again... how?
+
