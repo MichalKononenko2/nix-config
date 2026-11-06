@@ -93,3 +93,6 @@ The SD card slot also started working. Again... how?
 There is a hash mismatch in nixpkgs. [This PR](https://github.com/NixOS/nixpkgs/pull/582675/changes) fixes the problem. It will take a few days for the fix to arrive.
 I'll update the OS then. For now, switch to master branch and build from that.
 
+I removed brave and replaced it with firefox. As of November 3, Brave did not have
+any maintainers for nixpkgs.
+
