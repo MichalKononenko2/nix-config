@@ -88,3 +88,8 @@ card filesystem. How?
 
 The SD card slot also started working. Again... how?
 
+## 2026-11-05: Broken OpenCode
+
+There is a hash mismatch in nixpkgs. [This PR](https://github.com/NixOS/nixpkgs/pull/582675/changes) fixes the problem. It will take a few days for the fix to arrive.
+I'll update the OS then. For now, switch to master branch and build from that.
+
