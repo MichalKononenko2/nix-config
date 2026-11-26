@@ -53,7 +53,6 @@ in
         pamixer
         direnv
         nix-direnv
-        vscode
         elan
         tor-browser
         vlc
