@@ -26,19 +26,26 @@
   # home-manager evaluation starts failing on nixpkgs API changes.
   home.enableNixpkgsReleaseCheck = false;
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user.name = "MichalKononenko2";
-      user.email = "michalkononenko@gmail.com";
-      init.defaultBranch = "master";
+  programs = {
+    bash = {
+      enable = true;
+      enableCompletion = true;
+    };
+    git = {
+      enable = true;
+      settings = {
+        user.name = "MichalKononenko2";
+        user.email = "michalkononenko@gmail.com";
+        init.defaultBranch = "master";
+      };
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableBashIntegration = true;
     };
   };
+
 
   # Proves that `osConfig` is threaded through from the host: the shell prompt
   # can tell you which machine you are on.
