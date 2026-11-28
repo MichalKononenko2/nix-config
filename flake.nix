@@ -2,7 +2,7 @@
   description = "Michal Kononenko's operating system";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     agenix = {
       url = "github:ryantm/agenix";

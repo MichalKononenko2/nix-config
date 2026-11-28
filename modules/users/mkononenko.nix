@@ -42,7 +42,7 @@ in
       type = lib.types.listOf lib.types.package;
       default = with pkgs; [
         fastfetch
-        brave
+        firefox
         htop
         inkscape
         gimp
@@ -53,7 +53,6 @@ in
         pamixer
         direnv
         nix-direnv
-        vscode
         elan
         tor-browser
         vlc
