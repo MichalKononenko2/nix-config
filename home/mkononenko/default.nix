@@ -18,13 +18,7 @@
 {
   home.username = "mkononenko";
   home.homeDirectory = "/home/mkononenko";
-  home.stateVersion = "25.05";
-
-  # home-manager tracks release-26.05 while nixpkgs tracks nixos-unstable, so
-  # every build would otherwise print a version-mismatch warning. The
-  # mismatch is a deliberate choice, not an oversight; revisit it if
-  # home-manager evaluation starts failing on nixpkgs API changes.
-  home.enableNixpkgsReleaseCheck = false;
+  home.stateVersion = "26.05";
 
   programs = {
     bash = {
